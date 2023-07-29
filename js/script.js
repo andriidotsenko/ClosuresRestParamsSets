@@ -141,7 +141,67 @@ function byProperty(property, direction) {
 		}
 	}
 }
-//========================================================================================================================================================
+//====================================================
+//власна функція, яка приймає додатково ще й сам масив та так само його ортує.
+console.log(`-------------------------------
+
+Ex. 3(v.2):`)
+
+const films = [
+	{
+		movieName: 'The Thing',
+		releaseYear: 1982,
+		directedBy: 'Carpenter',
+		runningTimeInMinutes: 109,
+	},
+	{
+		movieName: 'Aliens',
+		releaseYear: 1986,
+		directedBy: 'Cameron',
+		runningTimeInMinutes: 137,
+	},
+	{
+		movieName: 'Men in Black',
+		releaseYear: 1997,
+		directedBy: 'Sonnenfeld',
+		runningTimeInMinutes: 98,
+	},
+	{
+		movieName: 'Predator',
+		releaseYear: 1987,
+		directedBy: 'McTiernan',
+		runningTimeInMinutes: 107,
+	},
+]
+
+
+console.log(`
+Mасив фільмів посортованих по року випуску, від старішого до новішого`)
+console.log(...ArrByProperty(films, 'releaseYear', '>'))
+// виведе масив фільмів посортованих по року випуску, від старішого до новішого
+
+console.log(`
+Mасив фільмів посортованих по їх тривалості, від найдовшого до найкоротшого`)
+console.log(...ArrByProperty(films, 'runningTimeInMinutes', '<'))
+// виведе масив фільмів посортованих по їх тривалості, від найдовшого до найкоротшого
+
+console.log(`
+Mасив фільмів посортованих по назві, в алфавітному порядку`)
+console.log(...ArrByProperty(films, 'movieName', '>'))
+// виведе масив фільмів посортованих по назві, в алфавітному порядку
+
+// I've been adding spread (...) to the calls to spread our array for easy viewing in the console.
+// This was not the case in the task, but it is more convenient for the demonstration,
+// after all, you don't need to click on the "expand the array" slider every time
+
+function ArrByProperty(array, property, direction) {
+	return array.sort((a, b) => typeof a[property] === 'number' && typeof b[property] === 'number'
+		? (direction === '>')
+			? a[property] - b[property] : b[property] - a[property]
+		: (direction === '>')
+			? String(a[property]).localeCompare(b[property])
+			: String(b[property]).localeCompare(a[property]));
+}
 
 //========================================================================================================================================================
 
