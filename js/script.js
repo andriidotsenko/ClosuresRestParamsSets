@@ -123,7 +123,7 @@ console.log(...movies.sort(byProperty('directedBy', '<')))
 function byProperty(property, direction) {
 	return (a, b) => {
 		// check if the property exists in both objects
-		if (!a.hasOwnProperty(property) || !b.hasOwnProperty(property)) {
+		if (!a.hasOwnProperty(property) && !b.hasOwnProperty(property)) {
 			return 0; // for .sort() return 0 = "do not swap a pair of values, i.e. do not sort"
 		}
 		if (typeof a[property] === 'number' && typeof b[property] === 'number') {
@@ -141,6 +141,9 @@ function byProperty(property, direction) {
 		}
 	}
 }
+//========================================================================================================================================================
+
+//========================================================================================================================================================
 
 console.log(`-------------------------------
 
