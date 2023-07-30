@@ -122,25 +122,10 @@ console.log(...movies.sort(byProperty('directedBy', '<')))
 
 function byProperty(property, direction) {
 	return (a, b) => {
-		// check if the property exists in both objects
-		if (!a.hasOwnProperty(property) && !b.hasOwnProperty(property)) {
-			return 0; // for .sort() return 0 = "do not swap a pair of values, i.e. do not sort"
-		}
-		if (typeof a[property] === 'number' && typeof b[property] === 'number') {
-			if (direction === '>') { // sort array by number, if both of the properties are numbers
-				return a[property] - b[property];
-			} else {
-				return b[property] - a[property];
-			}
-		} else {  //else sort Array by string alphabetical sorting (even if one of the properties is a number)
-			if (direction === '>') {
-				return a[property].localeCompare(b[property]);
-			} else {
-				return b[property].localeCompare(a[property]);
-			}
-		}
+		return direction === '>' ? (a[property] < b[property] ? -1 : 1) : (a[property] > b[property] ? -1 : 1)
 	}
 }
+
 //====================================================
 //власна функція, яка приймає додатково ще й сам масив та так само його ортує.
 console.log(`-------------------------------
