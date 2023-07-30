@@ -121,10 +121,9 @@ console.log(...movies.sort(byProperty('directedBy', '<')))
 // after all, you don't need to click on the "expand the array" slider every time
 
 function byProperty(property, direction) {
-	return (a, b) => {
-		return direction === '>' ? (a[property] < b[property] ? -1 : 1) : (a[property] > b[property] ? -1 : 1)
-	}
+	return (a, b) => (direction === '>' ? a[property] - b[property] : b[property] - a[property]);
 }
+
 
 //====================================================
 //власна функція, яка приймає додатково ще й сам масив та так само його ортує.
