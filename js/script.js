@@ -179,13 +179,10 @@ console.log(...ArrByProperty(films, 'movieName', '>'))
 // This was not the case in the task, but it is more convenient for the demonstration,
 // after all, you don't need to click on the "expand the array" slider every time
 
-function ArrByProperty(array, property, direction) {
-	return array.sort((a, b) => typeof a[property] === 'number' && typeof b[property] === 'number'
-		? (direction === '>')
-			? a[property] - b[property] : b[property] - a[property]
-		: (direction === '>')
-			? String(a[property]).localeCompare(b[property])
-			: String(b[property]).localeCompare(a[property]));
+function ArrByProperty(arr, prop, dir) {
+	return arr.sort((a, b) => {
+		return dir === '>' ? a[prop] - b[prop] : b[prop] - a[prop];
+	});
 }
 
 //========================================================================================================================================================
